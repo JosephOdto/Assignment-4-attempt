@@ -1,0 +1,29 @@
+
+public class Assign3 {
+
+	public static void main(String[] args)
+	{
+		System.out.println("Welcome to the NIM cup\nWe play by the normal play rules");
+		Nim nimGame = new Nim();
+		boolean validMove;
+		boolean playersTurn;
+		do {
+			playersTurn=true;
+			nimGame.printHeaps();
+			validMove=nimGame.playerMove();
+			if(validMove && !nimGame.gameDone()) 
+			{
+				playersTurn=false;
+				nimGame.printHeaps();
+				nimGame.gameMove();
+			}
+		} while(!nimGame.gameDone());
+		if(playersTurn)
+		{
+			System.out.println("Congrats: you win");
+		} else {
+			System.out.println("Sorry: you lose");
+		}
+	}
+
+}
