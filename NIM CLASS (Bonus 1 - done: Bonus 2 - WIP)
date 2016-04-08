@@ -13,19 +13,20 @@ public class Nim {
 	{
 		numHeaps = howManyHeaps;
 		heap = new Heap[howManyHeaps];
-		for(i=0;i<howManyHeaps;i++)
-			heap[i] = new Heap (10);
+		setHeaps();
 		randomNumbers = new Random ();
 	}
-/*
+
 	public void setHeaps() // Bonus 1: Set the size of each individual heap
 	{
 		int setHeapValue;
 		for(int i=0; i<numHeaps;i++){
-			setHeapValue = next.Int
+			System.out.print("Size of heap " + (toChar(i)) + ": "); //subtracts 5 to go back to 0 which is A then starts counting back up to max heap
+			setHeapValue = input.nextInt();
+			heap[i] = new Heap(setHeapValue);
 		}	
 	}
-*/	
+
 	public boolean playerMove()
 	{
 		int heapLetterToInt,flag=1;
@@ -94,7 +95,7 @@ public class Nim {
 		int isEmptyCounter=0;
 		for(i=0;i<numHeaps;i++){
 			if(heap[i].isEmpty()==true)
-			isEmptyCounter++;
+				isEmptyCounter++;
 		}
 		if(isEmptyCounter==numHeaps)
 			return true;
