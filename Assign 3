@@ -1,12 +1,25 @@
-
+import java.util.Scanner;
 public class Assign3 {
 
 	public static void main(String[] args)
 	{
-		System.out.println("Welcome to the NIM cup\nWe play by the normal play rules");
-		Nim nimGame = new Nim();
+		System.out.println("Welcome to the NIM extreme challenge\nWe play by the normal play rules");
 		boolean validMove;
 		boolean playersTurn;
+		int howManyHeaps=0;
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("How many heaps do you want to have?");
+		
+		while(howManyHeaps<=0 || howManyHeaps >26){
+				howManyHeaps = input.nextInt();
+				if(howManyHeaps<=0 || howManyHeaps> 26)
+					System.out.print("Error:pick a number between 1 and 26: ");
+		}
+				
+		Nim nimGame = new Nim(howManyHeaps);
+	
+		
 		do {
 			playersTurn=true;
 			nimGame.printHeaps();
