@@ -1,0 +1,42 @@
+import java.util.Scanner;
+public class Assign3 {
+
+	public static void main(String[] args)
+	{
+		System.out.println("Welcome to the NIM extreme challenge\nWe play by the normal play rules");
+		boolean validMove;
+		boolean playersTurn;
+		int howManyHeaps=0;
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("How many heaps do you want to have?");
+		
+		while(howManyHeaps<=0 || howManyHeaps >26){
+				howManyHeaps = input.nextInt();
+				if(howManyHeaps<=0 || howManyHeaps> 26)
+					System.out.print("Error:pick a number between 1 and 26: ");
+		}
+				
+		Nim nimGame = new Nim(howManyHeaps);
+	
+		
+		do {
+			playersTurn=true;
+			nimGame.printHeaps();
+			validMove=nimGame.playerMove();
+			if(validMove && !nimGame.gameDone()) 
+			{
+				playersTurn=false;
+				nimGame.printHeaps();
+				nimGame.gameMove();
+			}
+		} while(!nimGame.gameDone());
+		if(playersTurn)
+		{
+			System.out.println("Congrats: you win");
+		} else {
+			System.out.println("Sorry: you lose");
+		}
+	}
+
+}
