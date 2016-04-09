@@ -1,3 +1,6 @@
+// 	Joseph Odtohan 
+//	Section - 300 
+//	Instructor - Howard Rosenblum
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,7 +12,7 @@ public class Nim {
 	private Scanner input = new Scanner(System.in);
 
 
-	public Nim(int howManyHeaps)
+	public Nim(int howManyHeaps) //Initial constructor
 	{
 		numHeaps = howManyHeaps;
 		heap = new Heap[howManyHeaps];
@@ -17,11 +20,21 @@ public class Nim {
 		randomNumbers = new Random ();
 	}
 
+	public Nim(Nim nimCopy) // copy constructor
+	{
+		this.numHeaps = nimCopy.numHeaps;
+		this.heap = new Heap[nimCopy.numHeaps];
+		for(i=0;i<this.numHeaps;i++)
+			this.heap[i]= new Heap(nimCopy.heap[i].getSize());
+
+		randomNumbers = new Random ();
+	}
+
 	public void setHeaps() // Bonus 1: Set the size of each individual heap
 	{
 		int setHeapValue;
 		for(int i=0; i<numHeaps;i++){
-			System.out.print("Size of heap " + (toChar(i)) + ": "); //subtracts 5 to go back to 0 which is A then starts counting back up to max heap
+			System.out.print("Size of heap " + (toChar(i)) + ": "); //counts heap from 0=A and goes up
 			setHeapValue = input.nextInt();
 			heap[i] = new Heap(setHeapValue);
 		}	
@@ -39,8 +52,14 @@ public class Nim {
 			if(heapLetterToInt>=0 && heapLetterToInt<numHeaps)
 				break;
 			else{
-				System.out.println("Invalid heap letter, select letter from A to "+ toChar(heapLetterToInt-1)); // minus one to compensa
-				return false;
+				if(numHeaps==1){
+					System.out.println("Invalid heap letter, select letter from A");
+					return false;
+				}	
+				else{
+					System.out.println("Invalid heap letter, select letter from A to "+ toChar(numHeaps-1)); // minus one to compensate
+					return false;
+				}
 			}
 		}while(flag!=0);
 
