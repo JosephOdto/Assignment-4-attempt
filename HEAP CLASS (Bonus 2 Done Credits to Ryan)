@@ -1,4 +1,6 @@
-
+// 	Joseph Odtohan 
+//	Section - 300 
+//	Instructor - Howard Rosenblum
 public class Heap {
 	private int heapSize;
 	
