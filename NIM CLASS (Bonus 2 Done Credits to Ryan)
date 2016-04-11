@@ -25,7 +25,7 @@ public class Nim {
 		this.numHeaps = nimCopy.numHeaps;
 		this.heap = new Heap[nimCopy.numHeaps];
 		for(i=0;i<this.numHeaps;i++)
-			this.heap[i]= new Heap(nimCopy.heap[i].getSize());
+			this.heap[i]= new Heap(nimCopy.heap[i].getSize()); // setting the actual values when the values are copied from original heap to cloned heap 
 
 		randomNumbers = new Random ();
 	}
